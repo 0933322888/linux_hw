@@ -1,0 +1,36 @@
+DISTRIB_ID=Ubuntu
+DISTRIB_RELEASE=20.04
+DISTRIB_CODENAME=focal
+DISTRIB_DESCRIPTION="Ubuntu 20.04.1 LTS"
+NAME="Ubuntu"
+VERSION="20.04.1 LTS (Focal Fossa)"
+ID=ubuntu
+ID_LIKE=debian
+PRETTY_NAME="Ubuntu 20.04.1 LTS"
+VERSION_ID="20.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=focal
+UBUNTU_CODENAME=focal
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.0   8936   316 ?        Ssl  Oct04   0:00 /init
+root       149  0.0  0.0   8936   224 tty1     Ss   Oct04   0:00 /init
+andrey     150  0.0  0.0  18216  3768 tty1     S    Oct04   0:00 -bash
+root       167  0.0  0.0  19180  2880 tty1     S    Oct04   0:00 sudo su
+root       168  0.0  0.0  18116  2028 tty1     S    Oct04   0:00 su
+root       169  0.0  0.0  17372  2904 tty1     S    Oct04   0:00 bash
+root       434  0.0  0.0  18648  1892 tty1     R    00:15   0:00 ps aux
+?            1 init
+Filesystem     1K-blocks      Used Available Use% Mounted on
+rootfs         248684824 230124584  18560240  93% /
+none           248684824 230124584  18560240  93% /dev
+none           248684824 230124584  18560240  93% /run
+none           248684824 230124584  18560240  93% /run/lock
+none           248684824 230124584  18560240  93% /run/shm
+none           248684824 230124584  18560240  93% /run/user
+tmpfs          248684824 230124584  18560240  93% /sys/fs/cgroup
+C:\            248684824 230124584  18560240  93% /mnt/c
+F:\            976759804    135064 976624740   1% /mnt/f
+/usr/bin/vi
