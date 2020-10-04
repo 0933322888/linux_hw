@@ -1,0 +1,256 @@
+PASSWD(5)                                    File Formats and Conversions                                   PASSWD(5)
+
+NAME
+       passwd - the password file
+
+DESCRIPTION
+       /etc/passwd contains one line for each user account, with seven fields delimited by colons (“:”). These fields
+       are:
+
+       •   login name
+
+       •   optional encrypted password
+
+       •   numerical user ID
+
+       •   numerical group ID
+
+       •   user name or comment field
+
+       •   user home directory
+
+       •   optional user command interpreter
+
+       If the password field is a lower-case “x”, then the encrypted password is actually stored in the shadow(5)
+       file instead; there must be a corresponding line in the /etc/shadow file, or else the user account is invalid.
+
+       The encrypted password field may be empty, in which case no password is required to authenticate as the
+       specified login name. However, some applications which read the /etc/passwd file may decide not to permit any
+       access at all if the password field is blank.
+
+       A password field which starts with an exclamation mark means that the password is locked. The remaining
+       characters on the line represent the password field before the password was locked.
+
+       Refer to crypt(3) for details on how this string is interpreted.
+
+       If the password field contains some string that is not a valid result of crypt(3), for instance ! or *, the
+       user will not be able to use a unix password to log in (but the user may log in the system by other means).
+
+       The comment field is used by various system utilities, such as finger(1).
+
+       The home directory field provides the name of the initial working directory. The login program uses this
+       information to set the value of the $HOME environmental variable.
+
+       The command interpreter field provides the name of the user's command language interpreter, or the name of the
+       initial program to execute. The login program uses this information to set the value of the $SHELL
+       environmental variable. If this field is empty, it defaults to the value /bin/sh.
+
+FILES
+       /etc/passwd
+           User account information.
+
+       /etc/shadow
+           optional encrypted password file
+
+       /etc/passwd-
+           Backup file for /etc/passwd.
+
+           Note that this file is used by the tools of the shadow toolsuite, but not by all user and password
+           management tools.
+
+SEE ALSO
+       crypt(3), getent(1), getpwnam(3), login(1), passwd(1), pwck(8), pwconv(8), pwunconv(8), shadow(5), su(1),
+       sulogin(8).
+
+shadow-utils 4.8.1                                    05/28/2020                                            PASSWD(5)
+30-systemd-environment-d-generator (8) - Load variables specified by environment.d
+deb-systemd-helper (1p) - subset of systemctl for machines not running systemd
+deb-systemd-invoke (1p) - wrapper around systemctl, respecting policy-rc.d
+init (1)             - systemd system and service manager
+journalctl (1)       - Query the systemd journal
+libnss_systemd.so.2 (8) - Provide UNIX user and group name resolution for user/group lookup via Varlink
+loader.conf (5)      - Configuration file for systemd-boot
+loginctl (1)         - Control the systemd login manager
+lvm2-activation-generator (8) - generator for systemd units to activate LVM volumes on boot
+networkd-dispatcher (8) - Dispatcher service for systemd-networkd connection status changes
+nss-systemd (8)      - Provide UNIX user and group name resolution for user/group lookup via Varlink
+pam_systemd (8)      - Register user sessions in the systemd login manager
+systemctl (1)        - Control the systemd system and service manager
+systemd (1)          - systemd system and service manager
+systemd-analyze (1)  - Analyze and debug system manager
+systemd-ask-password (1) - Query the user for a system password
+systemd-ask-password-console.path (8) - Query the user for system passwords on the console and via wall
+systemd-ask-password-console.service (8) - Query the user for system passwords on the console and via wall
+systemd-ask-password-wall.path (8) - Query the user for system passwords on the console and via wall
+systemd-ask-password-wall.service (8) - Query the user for system passwords on the console and via wall
+systemd-backlight (8) - Load and save the display backlight brightness at boot and shutdown
+systemd-backlight@.service (8) - Load and save the display backlight brightness at boot and shutdown
+systemd-binfmt (8)   - Configure additional binary formats for executables at boot
+systemd-binfmt.service (8) - Configure additional binary formats for executables at boot
+systemd-bless-boot (8) - Mark current boot process as successful
+systemd-bless-boot-generator (8) - Pull systemd-bless-boot.service into the initial boot transaction when boot counti...
+systemd-bless-boot.service (8) - Mark current boot process as successful
+systemd-boot (7)     - A simple UEFI boot manager
+systemd-boot-check-no-failures (8) - verify that the system booted up cleanly
+systemd-boot-check-no-failures.service (8) - verify that the system booted up cleanly
+systemd-boot-system-token.service (8) - Generate an initial boot loader system token and random seed
+systemd-cat (1)      - Connect a pipeline or program's output with the journal
+systemd-cgls (1)     - Recursively show control group contents
+systemd-cgtop (1)    - Show top control groups by their resource usage
+systemd-cryptsetup (8) - Full disk decryption logic
+systemd-cryptsetup-generator (8) - Unit generator for /etc/crypttab
+systemd-cryptsetup@.service (8) - Full disk decryption logic
+systemd-debug-generator (8) - Generator for enabling a runtime debug shell and masking specific units at boot
+systemd-delta (1)    - Find overridden configuration files
+systemd-detect-virt (1) - Detect execution in a virtualized environment
+systemd-environment-d-generator (8) - Load variables specified by environment.d
+systemd-escape (1)   - Escape strings for usage in systemd unit names
+systemd-fsck (8)     - File system checker logic
+systemd-fsck-root.service (8) - File system checker logic
+systemd-fsck@.service (8) - File system checker logic
+systemd-fsckd (8)    - File system check progress reporting
+systemd-fsckd.service (8) - File system check progress reporting
+systemd-fsckd.socket (8) - File system check progress reporting
+systemd-fstab-generator (8) - Unit generator for /etc/fstab
+systemd-getty-generator (8) - Generator for enabling getty instances on the console
+systemd-gpt-auto-generator (8) - Generator for automatically discovering and mounting root, /home/, /srv/, /var/ and ...
+systemd-growfs (8)   - Creating and growing file systems on demand
+systemd-growfs@.service (8) - Creating and growing file systems on demand
+systemd-halt.service (8) - System shutdown logic
+systemd-hibernate-resume (8) - Resume from hibernation
+systemd-hibernate-resume-generator (8) - Unit generator for resume= kernel parameter
+systemd-hibernate-resume@.service (8) - Resume from hibernation
+systemd-hibernate.service (8) - System sleep state logic
+systemd-hostnamed (8) - Host name bus mechanism
+systemd-hostnamed.service (8) - Host name bus mechanism
+systemd-hwdb (8)     - hardware database management tool
+systemd-hybrid-sleep.service (8) - System sleep state logic
+systemd-id128 (1)    - Generate and print sd-128 identifiers
+systemd-importd (8)  - VM and container image import and export service
+systemd-importd.service (8) - VM and container image import and export service
+systemd-inhibit (1)  - Execute a program with an inhibition lock taken
+systemd-initctl (8)  - /dev/initctl compatibility
+systemd-initctl.service (8) - /dev/initctl compatibility
+systemd-initctl.socket (8) - /dev/initctl compatibility
+systemd-journald (8) - Journal service
+systemd-journald-audit.socket (8) - Journal service
+systemd-journald-dev-log.socket (8) - Journal service
+systemd-journald-varlink@.socket (8) - Journal service
+systemd-journald.service (8) - Journal service
+systemd-journald.socket (8) - Journal service
+systemd-journald@.service (8) - Journal service
+systemd-journald@.socket (8) - Journal service
+systemd-kexec.service (8) - System shutdown logic
+systemd-localed (8)  - Locale bus mechanism
+systemd-localed.service (8) - Locale bus mechanism
+systemd-logind (8)   - Login manager
+systemd-logind.service (8) - Login manager
+systemd-machine-id-commit.service (8) - Commit a transient machine ID to disk
+systemd-machine-id-setup (1) - Initialize the machine ID in /etc/machine-id
+systemd-makefs (8)   - Creating and growing file systems on demand
+systemd-makefs@.service (8) - Creating and growing file systems on demand
+systemd-mkswap@.service (8) - Creating and growing file systems on demand
+systemd-modules-load (8) - Load kernel modules at boot
+systemd-modules-load.service (8) - Load kernel modules at boot
+systemd-mount (1)    - Establish and destroy transient mount or auto-mount points
+systemd-network-generator (8) - Generate network configuration from the kernel command line
+systemd-network-generator.service (8) - Generate network configuration from the kernel command line
+systemd-networkd (8) - Network manager
+systemd-networkd-wait-online (8) - Wait for network to come online
+systemd-networkd-wait-online.service (8) - Wait for network to come online
+systemd-networkd.service (8) - Network manager
+systemd-notify (1)   - Notify service manager about start-up completion and other daemon status changes
+systemd-path (1)     - List and query system and user paths
+systemd-poweroff.service (8) - System shutdown logic
+systemd-pstore (8)   - A service to archive contents of pstore
+systemd-pstore.service (8) - A service to archive contents of pstore
+systemd-quotacheck (8) - File system quota checker logic
+systemd-quotacheck.service (8) - File system quota checker logic
+systemd-random-seed (8) - Load and save the system random seed at boot and shutdown
+systemd-random-seed.service (8) - Load and save the system random seed at boot and shutdown
+systemd-rc-local-generator (8) - Compatibility generator for starting /etc/rc.local during boot
+systemd-reboot.service (8) - System shutdown logic
+systemd-remount-fs (8) - Remount root and kernel file systems
+systemd-remount-fs.service (8) - Remount root and kernel file systems
+systemd-resolved (8) - Network Name Resolution manager
+systemd-resolved.service (8) - Network Name Resolution manager
+systemd-rfkill (8)   - Load and save the RF kill switch state at boot and change
+systemd-rfkill.service (8) - Load and save the RF kill switch state at boot and change
+systemd-rfkill.socket (8) - Load and save the RF kill switch state at boot and change
+systemd-run (1)      - Run programs in transient scope units, service units, or path-, socket-, or timer-triggered se...
+systemd-run-generator (8) - Generator for invoking commands specified on the kernel command line as system service
+systemd-shutdown (8) - System shutdown logic
+systemd-sleep (8)    - System sleep state logic
+systemd-sleep.conf (5) - Suspend and hibernation configuration file
+systemd-socket-activate (1) - Test socket activation of daemons
+systemd-socket-proxyd (8) - Bidirectionally proxy local sockets to another (possibly remote) socket.
+systemd-suspend-then-hibernate.service (8) - System sleep state logic
+systemd-suspend.service (8) - System sleep state logic
+systemd-sysctl (8)   - Configure kernel parameters at boot
+systemd-sysctl.service (8) - Configure kernel parameters at boot
+systemd-system-update-generator (8) - Generator for redirecting boot to offline update mode
+systemd-system.conf (5) - System and session service manager configuration files
+systemd-sysusers (8) - Allocate system users and groups
+systemd-sysusers.service (8) - Allocate system users and groups
+systemd-sysv-generator (8) - Unit generator for SysV init scripts
+systemd-time-wait-sync (8) - Wait Until Kernel Time Synchronized
+systemd-time-wait-sync.service (8) - Wait Until Kernel Time Synchronized
+systemd-timedated (8) - Time and date bus mechanism
+systemd-timedated.service (8) - Time and date bus mechanism
+systemd-timesyncd (8) - Network Time Synchronization
+systemd-timesyncd.service (8) - Network Time Synchronization
+systemd-tmpfiles (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tmpfiles-clean.service (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tmpfiles-clean.timer (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tmpfiles-setup-dev.service (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tmpfiles-setup.service (8) - Creates, deletes and cleans up volatile and temporary files and directories
+systemd-tty-ask-password-agent (1) - List or process pending systemd password requests
+systemd-udev-settle.service (8) - Wait for all pending udev events to be handled
+systemd-udevd (8)    - Device event managing daemon
+systemd-udevd-control.socket (8) - Device event managing daemon
+systemd-udevd-kernel.socket (8) - Device event managing daemon
+systemd-udevd.service (8) - Device event managing daemon
+systemd-umount (1)   - Establish and destroy transient mount or auto-mount points
+systemd-update-utmp (8) - Write audit and utmp updates at bootup, runlevel changes and shutdown
+systemd-update-utmp-runlevel.service (8) - Write audit and utmp updates at bootup, runlevel changes and shutdown
+systemd-update-utmp.service (8) - Write audit and utmp updates at bootup, runlevel changes and shutdown
+systemd-user-sessions (8) - Permit user logins after boot, prohibit user logins at shutdown
+systemd-user-sessions.service (8) - Permit user logins after boot, prohibit user logins at shutdown
+systemd-user.conf (5) - System and session service manager configuration files
+systemd-veritysetup (8) - Disk integrity protection logic
+systemd-veritysetup-generator (8) - Unit generator for integrity protected block devices
+systemd-veritysetup@.service (8) - Disk integrity protection logic
+systemd-volatile-root (8) - Make the root file system volatile
+systemd-volatile-root.service (8) - Make the root file system volatile
+systemd.automount (5) - Automount unit configuration
+systemd.device (5)   - Device unit configuration
+systemd.directives (7) - Index of configuration directives
+systemd.dnssd (5)    - DNS-SD configuration
+systemd.environment-generator (7) - systemd environment file generators
+systemd.exec (5)     - Execution environment configuration
+systemd.generator (7) - systemd unit generators
+systemd.index (7)    - List all manpages from the systemd project
+systemd.journal-fields (7) - Special journal fields
+systemd.kill (5)     - Process killing procedure configuration
+systemd.link (5)     - Network device configuration
+systemd.mount (5)    - Mount unit configuration
+systemd.negative (5) - DNSSEC trust anchor configuration files
+systemd.net-naming-scheme (7) - Network device naming schemes
+systemd.netdev (5)   - Virtual Network Device configuration
+systemd.network (5)  - Network configuration
+systemd.offline-updates (7) - Implementation of offline updates in systemd
+systemd.path (5)     - Path unit configuration
+systemd.positive (5) - DNSSEC trust anchor configuration files
+systemd.preset (5)   - Service enablement presets
+systemd.resource-control (5) - Resource control unit settings
+systemd.scope (5)    - Scope unit configuration
+systemd.service (5)  - Service unit configuration
+systemd.slice (5)    - Slice unit configuration
+systemd.socket (5)   - Socket unit configuration
+systemd.special (7)  - Special systemd units
+systemd.swap (5)     - Swap unit configuration
+systemd.syntax (7)   - General syntax of systemd configuration files
+systemd.target (5)   - Target unit configuration
+systemd.time (7)     - Time and date specifications
+systemd.timer (5)    - Timer unit configuration
+systemd.unit (5)     - Unit configuration
